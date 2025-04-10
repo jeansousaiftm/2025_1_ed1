@@ -126,21 +126,55 @@ struct List {
 
     }
 
+    //O(n)
+    void insert(int v, int p) {
+
+        if (p <= 0) {
+            pushFront(v);
+            return;
+        }
+
+        if (p >= s) {
+            pushBack(v);
+            return;
+        }
+
+        Node *n = new Node(v);
+        s++;
+
+        Node *a = start;
+        for (int i = 0; i < p - 1; i++) {
+            a = a->next;
+        }
+
+        n->next = a->next;
+        a->next = n;
+
+    }
+
 };
 
 int main() {
 
     List l;
-    l.pushBack(15);
-    l.pushBack(12);
+    l.pushFront(10);
     l.pushFront(3);
-    l.pushFront(9);
-    l.print();
-    l.popBack();
-    l.print();
-    l.popBack();
-    l.print();
-    l.popBack();
+    l.pushBack(3);
+    //l.pushBack(5);
+    l.pushFront(8);
+    l.pushBack(50);
+    l.pushFront(78);
+    l.pushBack(1);
+    l.pushBack(75);
+    l.pushFront(25);
+    l.pushBack(60);
+    l.pushFront(34);
+    l.pushBack(80);
+    l.pushBack(30);
+    l.pushBack(23);
+    l.pushFront(5);
+    l.pushFront(66);
+    l.insert(5, 9);
     l.print();
 
 
